@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for post in postlar %}
+   <a href="{{ post.get_absolute_url }}"> {{ post.basliq }}</a><br>
+    {% if post.sekil %}<br>
+        {{ post.sekil.url }}i<br>
+    {% endif %}
+    {{ post.metin }}<br>
+    {{ post.istifadeci }}<br>
+    {{ post.cap_tarixi }}<br>
+    {% if request.user.is_authenticated %}
+    <a href="{{ post.get_update_url }}"><button >Deyisdir</button></a>
+    {% endif %}
+
+{% endfor %}
+</body>
+</html>
